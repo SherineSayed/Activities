@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Activity 5 - Profile</title>
+  <style>
+    body {
+      font-family: 'Courier New', monospace;
+      background: #111;
+      color: #eee;
+      display: flex;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+    .profile-card {
+      background: #1a1a1a;
+      border-radius: 20px;
+      padding: 30px;
+      width: 360px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+    .avatar {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: #333;
+      margin: 0 auto 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #888;
+      font-size: 12px;
+      border: 2px dashed #555;
+    }
+    .info-card h2 {
+      margin: 5px 0 0;
+      color: #7ee8fa;
+    }
+    .info-card p {
+      margin: 2px 0 20px;
+      color: #aaa;
+    }
+    .about-box {
+      border: 1px solid #7ee8fa;
+      border-radius: 8px;
+      padding: 12px;
+      text-align: left;
+      margin-bottom: 20px;
+      color: #ddd;
+    }
+    .skills-card h3 {
+      text-align: left;
+      color: #7ee8fa;
+      margin-bottom: 10px;
+    }
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+    .skill-badge {
+      border: 1px solid #7ee8fa;
+      border-radius: 6px;
+      padding: 5px 12px;
+      font-size: 13px;
+      color: #7ee8fa;
+    }
+    .contact-btn {
+      margin-top: 20px;
+      background: #7ee8fa;
+      color: #111;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      font-family: inherit;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+    // InfoCard component: displays name and age
+    function InfoCard({ name, age, title }) {
+      return (
+        <div className="info-card">
+          <div className="avatar">Profile Image</div>
+          <h2>{name}</h2>
+          <p>{title} — {age} years old</p>
+          <div className="about-box">
+            <strong>About Me</strong>
+            <p>I am learning React...</p>
+          </div>
+        </div>
+      );
+    }
+
+    // SkillsCard component: displays the user's skills
+    function SkillsCard({ skills }) {
+      return (
+        <div className="skills-card">
+          <h3>Skills</h3>
+          <div className="skills-list">
+            {skills.map((skill, index) => (
+              <span className="skill-badge" key={index}>{skill}</span>
+            ))}
+          </div>
+          <button className="contact-btn">Contact Me</button>
+        </div>
+      );
+    }
+
+    function App() {
+      return (
+        <div className="profile-card">
+          <InfoCard name="Eman Tamam" age={22} title="Frontend Developer" />
+          <SkillsCard skills={["HTML", "CSS", "JavaScript"]} />
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<App />);
+  </script>
+</body>
+</html>
